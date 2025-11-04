@@ -23,6 +23,37 @@
 
 <img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/183386b1-5b90-4f68-8cc5-c76a9b816f71" />
 
+- Mở VirtualBox để tạo máy ảo Ubuntu:
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/293ef8f1-17e4-43b2-984c-7c693a336601" />
+  + Chọn New -> có thể đặt tên VM Name tuỳ chọn. VD: Ubuntu
+  + Ở VM Forder có thể tuỳ chọn nơi để đặt máy ảo
+  + OS: Linux
+  + OS Version: Ubuntu (64-bit)
+  -> Chọn Next
+<img width="1892" height="1079" alt="image" src="https://github.com/user-attachments/assets/6a3936c7-9438-4e48-9740-b391741ba9bf" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/aeefe132-e712-409c-b08a-3140fc5b716d" />
+
+<img width="1899" height="1075" alt="image" src="https://github.com/user-attachments/assets/3b5ef6bb-cfc4-46b6-90e9-338ed854d805" />
+
+- Cài đặt Ubuntu:
+  + Chuột phải vào máy ảo tên: Ubuntu -> chọn Settings -> Storage
+  + Ở mục "Controller: IDE" -> chọn Choose a disk file
+  + Chọn file .iso ubuntun đã tải về -> OK
+<img width="1285" height="374" alt="image" src="https://github.com/user-attachments/assets/47e28ce8-1ccb-4dac-b24e-de42971d959d" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/28d004ca-0038-4748-ad1e-a7cea15875f1" />
+
+- Tiếp tục chuột phải vào máy ảo tên: Ubuntu -> chọn Start -> Start with GUI:
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/022c67b1-7afc-4bb4-8f71-033bade0c682" />
+
+
+
+
+
+
+
+
 
 
 
