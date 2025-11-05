@@ -1,4 +1,4 @@
-<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/7167a9a1-7699-4b17-aac3-b3b7f68f92d5" /># BÀI TẬP 3     : MÔN PHÁT TRIỂN ỨNG DỤNG TRÊN NỀN WEB
+# BÀI TẬP 3     : MÔN PHÁT TRIỂN ỨNG DỤNG TRÊN NỀN WEB
 ## Họ tên       : Vũ Việt Anh
 ## Lớp học phần : K58KTP.K01
 ## MSSV: K225480106082
@@ -169,6 +169,55 @@
 
   + phpMyAdmin: http://localhost:8080/
 <img width="1919" height="965" alt="image" src="https://github.com/user-attachments/assets/363bb0d6-d392-4953-96ad-c6b989b20b64" />
+
+### 4. Lập trình web frontend+backend
+- Mục tiêu:
+  + Tạo web IoT giám sát mức nước và cảnh báo ngập
+  + Node-RED sinh dữ liệu “mực nước” (giả lập).
+  + InfluxDB lưu dữ liệu.
+  + Frontend hiển thị giá trị hiện tại + biểu đồ mức nước từng khu.
+  + Khi vượt ngưỡng, Node-RED gửi cảnh báo.
+  + Grafana vẽ biểu đồ và cảnh báo tự động.
+#### 4.1. Cấu hình Node-RED
+- Truy cập Node-RED bằng http://localhost:1880
+- Cài các Node cần thiết bằng cách vào mục Menu -> Manage palette -> Install:
+  + node-red-contrib-influxdb
+  + node-red-node-random
+  + node-red-dashboard
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/64f7d3da-19d7-482e-88c8-8fec61d91e05" />
+- Tạo Flow mới:
+  + Cấu hình các Node
+<img width="1919" height="969" alt="image" src="https://github.com/user-attachments/assets/45d89a15-9ee7-4e8a-a022-c98ad6c455fc" />
+- Inject:
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/0396d547-13e2-4bdc-9356-872385d843f6" />
+- Function:
+  + Sinh giá trị ngẫu nhiên từ 0–120 cm
+  + Nếu >100 cm → báo ngập
+  + Tên bảng ghi trong InfluxDB
+  + Hiển thị giá trị trực tiếp trên flow
+<img width="1919" height="963" alt="image" src="https://github.com/user-attachments/assets/360ae226-aef1-45ef-968f-7f5d4e6c7cb9" />
+- InfluxDB out:
+<img width="1919" height="864" alt="image" src="https://github.com/user-attachments/assets/437ad01d-405d-4e90-81a6-22a578317104" />
+
+<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/1ff0d955-94a2-4810-85ad-2683a7b9d6b7" />
+- Debug:
+<img width="1919" height="866" alt="image" src="https://github.com/user-attachments/assets/a4879d78-509f-49e3-9dec-8e534a55d960" />
+- http in:
+<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/d6d136eb-be76-47f3-88ab-a0dd5ffbf004" />
+- Function - tạo query:
+<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/38426e89-a70d-4b2f-9d43-b184b1f72b15" />
+
+
+
+
+
+
+
+   
+
+
+
+
 
 
 
