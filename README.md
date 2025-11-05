@@ -206,6 +206,14 @@
 <img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/d6d136eb-be76-47f3-88ab-a0dd5ffbf004" />
 - Function - tạo query:
 <img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/38426e89-a70d-4b2f-9d43-b184b1f72b15" />
+- InfluxDB in - Đọc influx:
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/513e327c-1539-4925-98cf-faa14d7b83f4" />
+- Function - Trả JSON + CORS:
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/ceef6266-dd3a-4a1a-815b-2951e3cf1c81" />
+- http response - 200 OK:
+<img width="1919" height="969" alt="image" src="https://github.com/user-attachments/assets/97f3327d-008e-4173-ba0b-a2ddf14fcf25" />
+- Chạy thử trên: 
+
 
 
 
