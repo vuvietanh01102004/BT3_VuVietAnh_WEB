@@ -35,12 +35,12 @@
 <img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/c8608fb8-9694-417c-9ddc-31ff32b8953f" />
 
 - Mở Ubuntu (WSL2) rồi nhập: docker version
-<img width="1471" height="750" alt="image" src="https://github.com/user-attachments/assets/6476cf52-51c4-48e3-b585-dc21bfcff2e6" />
-  + Hiện như này là đã thành công
+<img width="1473" height="752" alt="image" src="https://github.com/user-attachments/assets/a226b79f-f9c7-4a28-98b1-73769b867cc3" />
+  -> Hiện như này là đã thành công
 
 ### 3. Sử dụng 1 file docker-compose.yml để cài đặt các docker container
 - Tạo thư mục:
-  + Ở Ubuntu (WSL2) nhập:
+  + Ở Ubuntu nhập:
     ```
     cd /mnt/d
 
@@ -54,9 +54,114 @@
   + Nhập nano docker-compose.yml
 <img width="1466" height="759" alt="image" src="https://github.com/user-attachments/assets/23d996e0-d6e4-4c49-820d-f364d9e4cd54" />
 
+```
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+
+  nodered:
+    image: nodered/node-red
+    container_name: nodered
+    restart: always
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+
+influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    restart: always
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend:/usr/share/nginx/html
+
+volumes:
+  mariadb_data:
+  influxdb_data:
+  nodered_data:
+```
 - Tạo file nginx.conf:
-  + Nhập: /mnt/d/baitap3_laptrinhweb, gõ lệnh: nano nginx.conf
-<img width="934" height="333" alt="image" src="https://github.com/user-attachments/assets/5a13a8ae-a137-4a4b-b9ea-10ff5359ddae" />
+  + Ở /mnt/d/baitap3_laptrinhweb, gõ lệnh: nano nginx.conf
+
+```
+events {}
+
+http {
+  server {
+    listen 80;
+    server_name vietanh.com;
+
+    # Trang web chính (Frontend)
+    location / {
+      root /usr/share/nginx/html;
+      index index.html;
+    }
+
+    # Truy cập Node-RED qua http://vietanh.com/nodered
+    location /nodered/ {
+      proxy_pass http://nodered:1880/;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # Truy cập Grafana qua http://vietanh.com/grafana
+    location /grafana/ {
+      proxy_pass http://grafana:3000/;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+    }
+  }
+}
+```
 
 - Tạo thư mục giao diện web:
   + Ở Ubuntu ( thư mục /mnt/d/baitap3_laptrinhweb), nhập: mkdir frontend
@@ -98,7 +203,6 @@
       -webkit-text-fill-color: transparent;
       letter-spacing: 1px;
     }
-
     /* Dòng mô tả */
     p {
       font-size: 20px;
@@ -138,9 +242,9 @@
 </head>
 <body>
   <h1>🌐 Website Vũ Việt Anh</h1>
-  <p>Chào mừng bạn đến với hệ thống web cá nhân của <strong>Vũ Việt Anh</strong> —  
+  <p>Chào mừng bạn đến với hệ thống web cá nhân của <strong>Vũ Việt Anh</strong> —
      được triển khai trên nền tảng <strong>Docker + Nginx + Node-RED + Grafana</strong>.</p>
-  
+
   <a href="/nodered/" class="btn">🚀 Truy cập Node-RED</a>
   <a href="/grafana/" class="btn">📊 Xem biểu đồ Grafana</a>
 
@@ -155,7 +259,7 @@
   + Nhập: docker compose up -d
 <img width="1460" height="445" alt="image" src="https://github.com/user-attachments/assets/9d7c1024-09f0-4d42-bd7f-a22a2889b1a5" />
   + Sau đó kiểm tra container bằng cách nhập: docker ps
-<img width="1919" height="948" alt="image" src="https://github.com/user-attachments/assets/260ac53b-22d3-4a5f-8bbd-ac26d5f9acaa" />
+<img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/b81c3b96-2984-459b-a982-c6e3fee0e8f9" />
 
 - Chạy thử trên trình duyệt:
   + Trang web chính: http://localhost/
