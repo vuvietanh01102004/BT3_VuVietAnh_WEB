@@ -257,7 +257,8 @@ http {
 
 - Chạy hệ thống:
   + Nhập: docker compose up -d
-<img width="1460" height="445" alt="image" src="https://github.com/user-attachments/assets/9d7c1024-09f0-4d42-bd7f-a22a2889b1a5" />
+<img width="975" height="314" alt="image" src="https://github.com/user-attachments/assets/6c970a34-013e-494f-97fe-ea257f3e2b64" />
+
   + Sau đó kiểm tra container bằng cách nhập: docker ps
 <img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/b81c3b96-2984-459b-a982-c6e3fee0e8f9" />
 
@@ -271,11 +272,92 @@ http {
   + Grafana: http://localhost:3000/
 <img width="1919" height="965" alt="image" src="https://github.com/user-attachments/assets/c9b909fa-7975-47a7-9bc0-e793c017f52e" />
 
-  + phpMyAdmin: http://localhost:8080/
-<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/a92afe3a-5b09-4a0d-808c-be48d49be59c" />
+  + phpMyAdmin: http://localhost:8081/
+<img width="975" height="506" alt="image" src="https://github.com/user-attachments/assets/a29a9ec1-9d17-4392-a24b-4b707de01c50" />
 
 ### 4. Lập trình web frontend+backend
-- Truy cập: http://localhost:8080/ 
+- Truy cập: http://localhost:8081/ -> đăng nhập:
+<img width="1919" height="966" alt="image" src="https://github.com/user-attachments/assets/3db6445e-0059-4602-8960-257b37505272" />
+
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/af660f9f-0b2e-48e6-8fba-eb5c66183f69" />
+
+- Kết nối MariaDB & InfluxDB:
+<img width="1919" height="969" alt="image" src="https://github.com/user-attachments/assets/f08c34dd-b6e3-48ec-b5b1-6e632d8888ec" />
+- MySQLdatabase:
+  + Host: mariadb
+  + Port: 3306
+  + User: iotuser
+  + Password: iotuser
+  + Database: iotdb
+<img width="1919" height="966" alt="image" src="https://github.com/user-attachments/assets/eefab5f5-9feb-485e-9209-5b1d9325371c" />
+- Function:
+<img width="1919" height="965" alt="Ảnh chụp màn hình 2025-11-08 141411" src="https://github.com/user-attachments/assets/dbcba96d-fada-4749-ad6e-25148410f6b5" />
+- Inject:
+<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/208196ac-6ac0-454d-b973-d78af32898b0" />
+- InfluxDB:
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/5a181503-bfc3-4137-a6f0-1203de718250" />
+
+- Cấu hình Node-RED: vào Node-RED cài các node sau:
+  + node-red-contrib-influxdb
+  + node-red-node-random
+  + node-red-dashboard
+  + node-red-node-mysql
+<img width="908" height="441" alt="image" src="https://github.com/user-attachments/assets/41da4401-4433-470b-931c-df2d9201e746" />
+
+<img width="890" height="444" alt="image" src="https://github.com/user-attachments/assets/ef89d6f6-415d-4a02-8eed-48f2ec30c4f8" />
+
+<img width="893" height="448" alt="image" src="https://github.com/user-attachments/assets/d0418579-4d71-4248-b81e-884affeb6834" />
+
+<img width="888" height="412" alt="image" src="https://github.com/user-attachments/assets/492066a1-89c6-4e7f-8985-6c5aa91734d7" />
+
+- Kết nối Grafana và hiển thị biểu đồ:
+  + Truy cập vào: http://localhost:3000 sẽ vào trang đăng nhập
+  + Username: admin
+  + Password: admin
+-> Sau đó sẽ vào bước nhập mật khẩu mới và xác nhận mật khẩu.
+- Chọn Connections -> Data sources
+  + Query language: InfluxQL
+  + User: iotuser
+  + Password: 123456
+-> Save & test
+<img width="975" height="522" alt="image" src="https://github.com/user-attachments/assets/6dff074a-3ea6-4aea-a3af-d88c0dd7c11a" />
+
+<img width="975" height="517" alt="image" src="https://github.com/user-attachments/assets/a3949e31-7fbd-4d71-8eb6-d2c2be7947da" />
+
+<img width="975" height="514" alt="image" src="https://github.com/user-attachments/assets/72f6a8ba-c6f4-4a1a-8590-82cf514a99e6" />
+
+- Tạo Frontend (index.html):
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/bc6f6693-f853-4384-813f-58ab2d946582" />
+
+<img width="1476" height="759" alt="image" src="https://github.com/user-attachments/assets/e319ead8-1bc2-4afa-8cb0-77f3e573ac9b" />
+
+- Mở Web Frontend
+  + Truy cập vào trình duyệt: http://localhost
+<img width="1651" height="838" alt="image" src="https://github.com/user-attachments/assets/1bae6580-2bfe-48f1-a116-f388fe8bab9e" />
+
+<img width="1763" height="818" alt="image" src="https://github.com/user-attachments/assets/7b3608b1-2b8a-4ca7-8647-e9dc2555e0db" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
